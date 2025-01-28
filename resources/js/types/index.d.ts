@@ -15,3 +15,24 @@ export type PageProps<
     };
     ziggy: Config & { location: string };
 };
+
+export type Product = {
+    id: string;
+    image: string;
+    title: string;
+    slug: string;
+    price: number;
+    quantity: number;
+    user: {
+        id: number;
+        name: string;
+    };
+    department: {
+        id: number;
+        name: string;
+    };
+}
+
+export type PaginationProps<T> = {
+    data: Array<T>;
+}
