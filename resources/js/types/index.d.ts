@@ -1,5 +1,24 @@
 import { Config } from 'ziggy-js';
 
+export type GroupedCartItems = {
+    user: User;
+    items: CartItem[];
+    totalPrice: number;
+    totalQuantity: number;
+};
+
+export type CartItem = {
+    id: number;
+    product_id: number;
+    title: string;
+    slug: string;
+    price: number;
+    quantity: number;
+    image: string;
+    option_ids: Record<string, number>;
+    options: VariationTypeOption[];
+};
+
 export interface User {
     id: number;
     name: string;
@@ -10,10 +29,14 @@ export interface User {
 export type PageProps<
     T extends Record<string, unknown> = Record<string, unknown>,
 > = T & {
+    csrf_token: string;
     auth: {
         user: User;
     };
     ziggy: Config & { location: string };
+    totalPrice: number;
+    totalQuantity: number;
+    miniCartItems: CartItem[];
 };
 
 export type Image = {
